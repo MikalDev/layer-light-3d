@@ -78,20 +78,25 @@ void main(void)
     float depthSample = texture2D(samplerDepth, mix(destStart, destEnd, (vTex-srcOriginStart)/(srcOriginEnd-srcOriginStart))).x;
   	vec2 nVtex = (vTex-srcOriginStart)/(srcOriginEnd-srcOriginStart);
   	vec3 n = normal(vTex);
+
+	mediump float zFar = 10000.0;
+    mediump float zNear = 1.0;
+    mediump float zLinear = zNear * zFar / (zFar + depthSample * (zNear - zFar));
+
 	// vec3 rgbNormal = n * 0.5 + 0.5;
 
 	// Lighting
-	// vec3 lp = vec3(lightPos, lightZ/layerDepth); // Need to linearize z and match to depthSample linear range
-	vec3 lp = vec3(lightPos, 0.2);
-	vec3 sp = vec3(nVtex, 1.0-depthSample);
+	vec3 lp = vec3(lightPos, lightZ/layerDepth); // Need to linearize z and match to depthSample linear range
+	// vec3 lp = vec3(lightPos, 0.2);
+	vec3 sp = vec3(nVtex, zLinear/zFar);
 	float d = 1.0-distance(lp,sp);
 	
 	vec3 c = lightColor * frontSample.rgb * clamp(dot(n, normalize(lp - sp)) * pow(d, lightPower), 0.0, 1.0)  + frontSample.rgb*ambientColor;
 
 	// Specular
     float e = specularPower;
-    vec3 ep = vec3(specularX/layerWidth, 1.0-specularY/layerHeight, 0.2);
-    // vec3 ep = vec3(specularX/layerWidth, specularY/layerHeight, specularZ/layerDepth);  // Need to linearize z and match to depthSample linear range
+    // vec3 ep = vec3(specularX/layerWidth, 1.0-specularY/layerHeight, 0.2);
+    vec3 ep = vec3(specularX/layerWidth, 1.0-specularY/layerHeight, specularZ/layerDepth);  // Need to linearize z and match to depthSample linear range
 	c += specularColor * pow(clamp(dot(normalize(reflect(lp - sp, n)), 
 	 				   normalize(sp - ep)), 0., 1.), e) * d;
 	
