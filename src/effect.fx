@@ -46,6 +46,8 @@ uniform lowp float specularZ;
 uniform lowp vec3 specularColor;
 uniform lowp float specularPower;
 uniform lowp vec3 ambientColor;
+uniform mediump float normalStep;
+uniform lowp float normalDebug;
 
 vec3 normal(in vec2 uv)
 {
@@ -60,8 +62,8 @@ vec3 normal(in vec2 uv)
     float s10 = texture2D(samplerDepth, mix(destStart, destEnd, (uv-srcOriginStart+off.yx*pixelSize)/(srcOriginEnd-srcOriginStart))).x;
     // float s12 = texture2D(samplerDepth, mix(destStart, destEnd, (uv-srcOriginStart+off.yz*pixelSize)/(srcOriginEnd-srcOriginStart))).x;
 
-	vec3 va = (vec3(size.xy*0.00001, s01 - s11));
-    vec3 vb = (vec3(size.yx*0.00001, s10 - s11));
+	vec3 va = (vec3(size.xy*normalStep, s01 - s11));
+    vec3 vb = (vec3(size.yx*normalStep, s10 - s11));
 
     vec3 normalV = normalize(cross(va, vb));
     
@@ -83,7 +85,7 @@ void main(void)
     mediump float zNear = 1.0;
     mediump float zLinear = zNear * zFar / (zFar + depthSample * (zNear - zFar));
 
-	// vec3 rgbNormal = n * 0.5 + 0.5;
+	vec3 rgbNormal = n * 0.5 + 0.5;
 
 	// Lighting
 	vec3 lp = vec3(lightPos, lightZ/layerDepth); // Need to linearize z and match to depthSample linear range
@@ -100,6 +102,6 @@ void main(void)
 	c += specularColor * pow(clamp(dot(normalize(reflect(lp - sp, n)), 
 	 				   normalize(sp - ep)), 0., 1.), e) * d;
 	
-	gl_FragColor = vec4(c, 1.)*frontSample.a;
+	gl_FragColor = normalDebug > 0.5 ? vec4(rgbNormal, 1.)*frontSample.a : vec4(c, 1.)*frontSample.a;
 	// gl_FragColor = vec4(rgbNormal, 1.)*frontSample.a;
 }

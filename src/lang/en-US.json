@@ -62,7 +62,16 @@
 "ambient-color": {
     "name": "Ambient color",
     "desc": "Ambient light color"
+},
+"normal-step": {
+    "name": "Normal step",
+    "desc": "Normal step (debug, normal variation control"
+},
+"normal-debug": {
+    "name": "Normal debug",
+    "desc": "Normal debug (debug, set to 1.0 to show normal colors"
 }
+
 				}
 			}
 		}
