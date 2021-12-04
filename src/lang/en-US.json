@@ -1,0 +1,70 @@
+{
+	"languageTag": "en-US",
+	"fileDescription": "Strings for the 'LayerLight3D' effect.",
+	"text": {
+		"effects": {
+			"mikal_layerlight3d": {
+				"name": "Layer Light 3D",
+				"description": "Fixed camera layer light for 3D Shapes and 3D Objects",
+				"parameters": {
+					"layer-width": {
+    "name": "Layer width",
+    "desc": "Layer width (pixels)"
+},
+"layer-height": {
+    "name": "Layer height",
+    "desc": "Layer height (pixels)"
+},
+"layer-depth": {
+    "name": "Layer depth",
+    "desc": "Layer depth (maximum z value)"
+},
+"light-x": {
+    "name": "Light x",
+    "desc": "Light x (pixels)"
+},
+"light-y": {
+    "name": "Light y",
+    "desc": "Light y (pixels)"
+},
+"light-z": {
+    "name": "Light z",
+    "desc": "Light z (pixels)"
+},
+"light-color": {
+    "name": "Light color",
+    "desc": "Light color"
+},
+"light-power": {
+    "name": "Light power",
+    "desc": "Light power (exponent)"
+},
+"specular-x": {
+    "name": "Specular x",
+    "desc": "Specular x (pixels)"
+},
+"specular-y": {
+    "name": "Specular y",
+    "desc": "Specular y (pixels)"
+},
+"specular-z": {
+    "name": "Specular z",
+    "desc": "Specular z"
+},
+"specular-color": {
+    "name": "specularColor",
+    "desc": "specularColor"
+},
+"specular-power": {
+    "name": "Specular power",
+    "desc": "Specular power"
+},
+"ambient-color": {
+    "name": "Ambient color",
+    "desc": "Ambient light color"
+}
+				}
+			}
+		}
+	}
+}

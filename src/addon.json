@@ -1,0 +1,116 @@
+{
+	"is-c3-addon": true,
+	"type": "effect",
+	"name": "Layer Light 3D",
+	"id": "Mikal_LayerLight3D",
+	"version": "1.0.0.0",
+	"author": "Mikal",
+	"website": "https://www.construct.net",
+	"documentation": "https://www.construct.net",
+	"description": "Fixed camera layer light for 3D Shapes and 3D Objects",
+	"file-list": [
+		"lang/en-US.json",
+		"addon.json",
+		"effect.fx"
+	],
+	
+	"category": "color",
+	"blends-background": false,
+	"cross-sampling": false,
+	"preserves-opaqueness": false,
+	"animated": false,
+	"must-predraw" : false,
+    "uses-depth": true,
+
+	"extend-box": {
+		"horizontal": 0,
+		"vertical": 0
+	},
+	
+	"parameters": [
+        {
+    "id":"layer-width",
+    "type": "float",
+    "initial-value":854,
+    "uniform": "layerWidth"
+},
+{
+    "id":"layer-height",
+    "type": "float",
+    "initial-value":480,
+    "uniform": "layerHeight"
+},
+{
+    "id":"layer-depth",
+    "type": "float",
+    "initial-value":10000,
+    "uniform": "layerDepth"
+},
+{
+    "id":"light-x",
+    "type": "float",
+    "initial-value":0,
+    "uniform": "lightX"
+},
+{
+    "id":"light-y",
+    "type": "float",
+    "initial-value":0,
+    "uniform": "lightY"
+},
+{
+    "id":"light-z",
+    "type": "float",
+    "initial-value":0,
+    "uniform": "lightZ"
+},
+{
+    "id":"light-color",
+    "type": "color",
+    "initial-value":[0.5,0.5,0.5],
+    "uniform": "lightColor"
+},
+{
+    "id":"light-power",
+    "type": "float",
+    "initial-value":0.2,
+    "uniform": "lightPower"
+},
+{
+    "id":"specular-x",
+    "type": "float",
+    "initial-value":0,
+    "uniform": "specularX"
+},
+{
+    "id":"specular-y",
+    "type": "float",
+    "initial-value":0,
+    "uniform": "specularY"
+},
+{
+    "id":"specular-z",
+    "type": "float",
+    "initial-value":0,
+    "uniform": "specularZ"
+},
+{
+    "id":"specular-color",
+    "type": "color",
+    "initial-value":[0.5,0.5,0.5],
+    "uniform": "specularColor"
+},
+{
+    "id":"specular-power",
+    "type": "float",
+    "initial-value":16,
+    "uniform": "specularPower"
+},
+{
+    "id":"ambient-color",
+    "type": "color",
+    "initial-value":[0.2,0.2,0.2],
+    "uniform": "ambientColor"
+}
+	]
+}
